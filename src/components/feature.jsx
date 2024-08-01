@@ -1,19 +1,33 @@
-import Featuredata from './data'
-import { nanoid } from 'nanoid'
-
+import React, { useState, useEffect } from 'react';
+import Featuredata from "./data";
+import { nanoid } from "nanoid";
 
 const Feature = () => {
-    const [data,setData]=useState([])
-    setData(Featuredata)
-    let id=nanoid()
-    let features=data.map(feature=>{<Featuredata key={id}/>})
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    setData(Featuredata);
+  }, []);
 
-    return ( 
-        <div>
-        <h1 className="text-center text-4xl font-bold mt-6">FEATURES</h1>
-        {/* {features} */}
-        </div>
-     );
-}
- 
+  let features = data.map((feature) => {
+    let id = nanoid();
+    <div key={id} className="flex-col">
+      {feature.img}
+      <p>{feature.title}</p>
+      <p>{feature.paragraph}</p>
+    </div>;
+  });
+
+  return (
+    <div>
+      <h1 className="text-center text-4xl font-bold mt-6">FEATURES</h1>
+      <div className="w-[80%] mx-auto flex">{features}</div>
+    </div>
+  );
+};
+
 export default Feature;
+
+
+
+
+ 
