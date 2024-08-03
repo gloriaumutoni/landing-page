@@ -9,8 +9,7 @@ const Feature = () => {
   }, []);
 
   let features = data.map((feature) => {
-    let id = nanoid();
-    <div key={id} className="flex-col">
+    <div key={nanoid()} className="flex-col">
       {feature.img}
       <p>{feature.title}</p>
       <p>{feature.paragraph}</p>
